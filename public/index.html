@@ -6,22 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Web site created using create-snowpack-app" />
     <link rel="stylesheet" type="text/css" href="/index.css" />
-    <title>Snowpack App</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <title>Tic Tac TypeScript</title>
+    <script type="module" src="/dist/index.js"> defer </script>
+    <!-- google font link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Press+Start+2P&display=swap" rel="stylesheet">
   </head>
   <body>
-    <img id="img" src="/logo.svg" />
-    <canvas id="canvas"></canvas>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <script type="module" src="/dist/index.js"></script>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <header>
+      <h1>Tic Tac Toe</h1>
+      <div id="game-settings">
+        <button id="reset">Reset Game</button>
+      </div>
+      <h2 id="message">Message</h2>
+    </header>
+    <main class="board">
+      <div id="sq0"></div>
+      <div id="sq1"></div>
+      <div class = "right-column" id="sq2"></div>
+      <div id="sq3"></div>
+      <div id="sq4"></div>
+      <div class = "right-column" id="sq5"></div>
+      <div class = "last-row" id="sq6"></div>
+      <div class = "last-row" id="sq7"></div>
+      <div class = "right-column last-row" id="sq8"></div>
+    </main>
+    <footer>
+      <p>
+        This is TypeScript refactor of <a href="https://thepika206-tic-tac-toe.netlify.app/">my original game in plain JS.</a>
+      </p>
+      
+    </footer>
   </body>
 </html>

@@ -1,14 +1,94 @@
-#img {
-  display: block;
-  margin: auto;
-  height: 128px;
-  width: 128px;
-  padding: 2rem;
+body {
+  background-color: gray;
+	/* Use a system font, if none are available use an available sans-sarif   font */
+	font-family: 'Indie Flower', cursive;
+  /* font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+		Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; */
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  background-image: url("https://images.unsplash.com/photo-1586075010923-2dd4570fb338?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
+  background-size: cover;
 }
 
-#canvas {
-  display: block;
-  margin: 2rem auto;
-  width: 540px;
-  height: 540px;
+body.nes-mode {
+  font-family: 'Press Start 2P', cursive;
+  font-size:medium 
+}
+
+h1 {
+  font-size: 3em;
+  margin: .5em;
+  margin-bottom: 0;
+}
+
+h2#message{
+  text-align: center;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+button {
+  color: white;
+  background-color: darkslategray;
+  font-family: 'Indie Flower', Arial, Helvetica, sans-serif;
+  width: 200px;
+  height: 40px;
+  border-radius: 15px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: slategray;
+}
+
+
+main.board {
+  color: darkblue;
+  border-color: darkblue;
+  display: grid;
+  grid-template-rows: repeat(3, 10vmin);
+  grid-template-columns: repeat(3, 10vmin);
+  grid-gap: 0vmin;
+  /* font-family: font-family: 'Indie Flower', cursive;; */
+}
+
+/* updated this style to be more specific to only the divs within the game board*/
+main.board div {
+  border-bottom: 3px solid darkblue;
+  border-right: 3px solid darkblue;
+  font-size: 8vmin;
+  text-align: center;
+  vertical-align: middle;
+}
+
+main.board div.last-row {
+  border-bottom: none;
+}
+
+main.board div.right-column {
+  border-right: none;
+}
+
+main.board div:hover {
+  cursor: pointer;
+}
+
+div.winner {
+  color: red;
+}
+
+p#tagline{
+  margin-top: 0px;
+}
+
+#game-settings{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
