@@ -86,7 +86,7 @@ p#tagline{
   margin-top: 0px;
 }
 
-#game-settings{
+header{
   display: flex;
   flex-direction: column;
   align-items: center;
