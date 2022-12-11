@@ -79,6 +79,14 @@ function handleClickBoard(sqIdx:number){
 }
 
 function render(){
+  board.forEach(function (element, idx){
+    const squareEl = squareEls?.children[idx]
+    if (squareEl && element !== null)
+      squareEl.textContent = element === 1 ? 'X' : 'O'
+    else if (squareEl)
+      squareEl.textContent = ''
+      squareEl?.classList.remove('winner')
+  })
   renderMessage()
 }
 
