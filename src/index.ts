@@ -72,11 +72,9 @@ function init (){
 
 function handleClickBoard(sqIdx:number){
   if (board[sqIdx]!==0) return //ignore clicks on occupied squares
-  console.log(sqIdx)
   board[sqIdx] = turn //set the board position according to the current player turn
   turn *= -1
   getWinner()
-  console.log('board',board, 'turn', turn, 'winner', winner)
   render()
 }
 

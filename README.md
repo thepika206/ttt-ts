@@ -1,8 +1,16 @@
-# New Project
+# About Tic Tac Type Script
+- [play now](https://tic-tac-typescript.netlify.app)
+![](https://i.imgur.com/pYgIqg3.png)
+- I refactored a game that I originally created in plain JS for General Assembly in order to practice TypeScript after graduation.
+- [my original game is found here](https://github.com/thepika206/ttt-weekend)
 
-> ✨ Bootstrapped with Create Snowpack App (CSA).
 
-## Available Scripts
+# Key Technologies
+- TypeScript
+- Snowpack
+
+
+# Getting Started in this SnowPack Project
 
 ### npm start
 
