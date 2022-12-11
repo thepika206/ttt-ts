@@ -14,25 +14,26 @@ const winningCombos: number[][] = [
 
 // type BoardArray = [number, ...board(number | null)[]]
 type NullNum = -1 | 1 | null
+type BoardValue = -1 | 1 | 0
 type WinLoseTie = -1 | 1 | 'T' | null
 type Turn = -1 | 1 //Player O is -1 and Player X is 1
 
 //Variables========================================================
-let board: NullNum [] =[
+let board: BoardValue [] =[
   -1,
   1,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0
 ]
 
 let turn: Turn
 let winner: WinLoseTie = null
-let finalCombo: NullNum
+let finalCombo: number //the actual winning combination at end of game
 //Cached Element References========================================
 const messageEl = document.querySelector<HTMLElement>('#message')
 const resetBtn = document.querySelector<HTMLButtonElement>('#reset')
@@ -52,36 +53,37 @@ resetBtn?.addEventListener('click', init)
 init()
 function init (){
   board = [
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
   ]
   turn = 1
   winner = null
-  finalCombo = null
+  finalCombo = -1
   console.log(board)
   render()
 }
 
 function handleClickBoard(sqIdx:number){
-  if (board[sqIdx]!==null) return //ignore clicks on occupied squares
+  if (board[sqIdx]!==0) return //ignore clicks on occupied squares
   console.log(sqIdx)
   board[sqIdx] = turn //set the board position according to the current player turn
   turn *= -1
-  console.log('board',board, 'turn', turn)
+  getWinner()
+  console.log('board',board, 'turn', turn, 'winner', winner)
   render()
 }
 
 function render(){
   board.forEach(function (element, idx){
     const squareEl = squareEls?.children[idx]
-    if (squareEl && element !== null)
+    if (squareEl && element !== 0)
       squareEl.textContent = element === 1 ? 'X' : 'O'
     else if (squareEl)
       squareEl.textContent = ''
@@ -102,7 +104,30 @@ function renderMessage(){
     messageText = `The winner is ${winningPlayer}!!`
   } 
   if (messageEl) messageEl.textContent = messageText
-  // if (finalCombo !== null) renderFinal()
+  if (finalCombo !== -1) renderFinal()
+}
+
+function getWinner(){// checks for a winning combination on each move and sets the winner 
+  
+  let i:number = 0
+  for (let combo of winningCombos){
+    let total:number = board[combo[0]]+board[combo[1]]+board[combo[2]]
+    if (total === -3) winner = -1
+    if (total === 3) winner = 1   
+    if (winner !== null) {
+      finalCombo = i
+      return
+    }
+    i++
+  }
+  winner = board.includes(0)? winner : 'T' //when no more empty spaces and no winner, declare a tie
+}
+
+function renderFinal(){//called by the main render function if there is a winner to style the board in a winner state
+  for (let boardIdx of winningCombos[finalCombo]){
+    const squareEl = document.getElementById(`sq${boardIdx}`)
+    squareEl?.classList.add('winner')
+  }
 }
 
 export{}
